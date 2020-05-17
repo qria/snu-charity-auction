@@ -25,7 +25,7 @@ SECRET_KEY = '3%&z9=4r+bz812!$3f#t1&833pb5bdvqt+yv=i!8dl65)eqg(('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['snu-charity-auction.herokuapp.com']
 
 
 # Application definition
