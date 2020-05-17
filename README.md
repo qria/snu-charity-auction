@@ -24,3 +24,5 @@ python manage.py runserver
 ## 서버 배포
 
 마스터에 머지되면 Heroku에 자동으로 배포됩니다.
+
+주소: https://snu-charity-auction.herokuapp.com/
