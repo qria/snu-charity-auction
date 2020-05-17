@@ -11,7 +11,9 @@
 
 (virtualenv 사용을 권장드립니다.)
 
-- pip install requirements.txt
+```bash
+pip install requirements.txt
+```
 
 ## 로컬 서버 실행
 
