@@ -12,7 +12,8 @@
 (virtualenv 사용을 권장드립니다.)
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
+python manage.py migrate
 ```
 
 ## 로컬 서버 실행
