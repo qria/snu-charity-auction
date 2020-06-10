@@ -1,7 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="logreg-forms">
+    <form class="form-signin" method="post">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="username" required="" autofocus="">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required="">
 
-<h2>Login</h2>
-<form method="post">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">Login</button>
-</form>
+        <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+        <a href="#" id="forgot_pswd">Forgot password?</a>
+        <hr>
+        <!-- <p>Don't have an account!</p>  -->
+        <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+    </form>
+</div>
+{% endblock %}
