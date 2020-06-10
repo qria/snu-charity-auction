@@ -11,6 +11,8 @@ def index(request):
 def create_auction_view(request):
     return render(request, 'create-auction.html')
 
+def modify_auction_view(request):
+    return render(request, 'modify-auction.html')
 
 def create_auction(request):
     name = request.POST['name']

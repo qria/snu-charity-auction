@@ -5,14 +5,14 @@
   <!-- Page Content -->
   <div class="container">
     <div class="col-md-12">
-          <h4 class="mb-3">새 경매 등록하기</h4>
+          <h4 class="mb-3">경매 내용 수정</h4>
           <form class="needs-validation" novalidate action="/api/auction" method="post">
             {% csrf_token %}
             <div class="row">
               <div class="col-md-12 mb-3">
                 <label for="name">제목</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="" value="Eastpak 가방" required>
                 </div>
               </div>
             </div>
@@ -20,14 +20,14 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="min-bid">시작가</label>
-                <input type="text" class="form-control" name="min-bid" id="min-bid" placeholder="" value="" required>
+                <input type="text" class="form-control" name="min-bid" id="min-bid" placeholder="" value="0원" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="max-bid">최고가</label>
-                <input type="text" class="form-control" name="max-bid" id="max-bid" placeholder="" value="" required>
+                <input type="text" class="form-control" name="max-bid" id="max-bid" placeholder="" value="100,000원" required>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -37,14 +37,14 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="start-datetime">시작일</label>
-                <input type="text" class="form-control" name="start-datetime" id="start-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="" required>
+                <input type="text" class="form-control" name="start-datetime" id="start-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="2020-06-01 00:00:00" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="end-datetime">종료일</label>
-                <input type="text" class="form-control" name="end-datetime" id="end-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="" required>
+                <input type="text" class="form-control" name="end-datetime" id="end-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="2020-06-15 23:59:59" required>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -67,7 +67,7 @@
             </div>
             
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">등록하기</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">수정하기</button>
           </form>
     </div>
   </div>
