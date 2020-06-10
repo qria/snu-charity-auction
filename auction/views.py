@@ -32,6 +32,8 @@ def create_auction(request):
 
     return HttpResponseRedirect('/')
 
-def item_detail_view(request):
-    # name = auction.name
-    return render(request, 'item-detail.html')
+
+def auction_detail_view(request, auction_id):
+    auction = Auction.objects.get(id=auction_id)
+    context = {'auction': auction}
+    return render(request, 'auction-detail.html', context)

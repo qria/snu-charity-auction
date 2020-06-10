@@ -9,8 +9,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 
 
-    # temp
     path('auction/create', views.create_auction_view),
     path('api/auction', views.create_auction),
-    path('item/detail', views.item_detail_view)
+    path('auction/detail/<int:auction_id>', views.auction_detail_view)
 ]
