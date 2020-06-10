@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <div class="container p-3">
+
+    <h1 class="text-center md-10 mb-5 font-weight-bold">물품 상세 정보</h1>
+
+    <div class="row">
+      
+      <div class="col-md-6">
+        <img class="img-thumbnail mb-4" src="{% static 'img/item1.jpg' %}" alt="" width="400">
+        
+        <div class="row">
+          
+          <div class="col-md-3">
+            <div class="p-2">
+              <img class="img-responsive img-thumbnail mb-4 float-left" src="{% static 'img/item1.jpg' %}" alt="" width="200">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="container">
+          <h2 class="text-center md-10 mb-4 font-weight-bold">Eastpak 가방</h2>
+          <div class="card card-lg mb-3">
+            <div class="card-body">
+              <h3 class="card-title text-center font-weight-bold">기본 정보</h4>
+              <h4 class="card-text text-left jb-large">
+                <br/>
+                원가: 20,000원 <br/>
+                현재가: 3,000원 <br/>
+                입찰: 3명 <br/>
+                종료: 3일 후
+              </h4>
+            </div>
+          </div>
+          <div class="card card-lg">
+            <div class="card-body">
+              <h3 class="card-title text-center font-weight-bold">상세 정보</h4>
+              <h4 class="card-text text-left jb-large">
+                <br/>
+                색상 : 카키와 베이지 중간 <br/>
+                사용연수: 1년 <br/>
+                얼룩 약간 있음 <br/>
+                부드럽게 열리고 닫힘
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-lg mb-4 pull-right btn-block">입찰</button>
+  </div>
+
+{% endblock %}

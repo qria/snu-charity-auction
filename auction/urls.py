@@ -11,5 +11,6 @@ urlpatterns = [
 
     # temp
     path('auction/create', views.create_auction_view),
-    path('api/auction', views.create_auction)
+    path('api/auction', views.create_auction),
+    path('item/detail', views.item_detail_view)
 ]

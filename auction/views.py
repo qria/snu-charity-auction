@@ -31,3 +31,7 @@ def create_auction(request):
     auction.save()
 
     return HttpResponseRedirect('/')
+
+def item_detail_view(request):
+    # name = auction.name
+    return render(request, 'item-detail.html')
