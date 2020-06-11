@@ -14,7 +14,10 @@ urlpatterns = [
     path('join-done/', views.CreateUserView.as_view(), name='join_done'),
 
     path('auction/create/', login_required(views.create_auction_view)),
-    path('auction/modify/', views.modify_auction_view),
-    path('api/auction/', views.create_auction),
-    path('auction/detail/<int:auction_id>/', views.auction_detail_view)
+    path('auction/modify/<int:auction_id>/', login_required(views.modify_auction_view)),
+    path('auction/detail/<int:auction_id>/', login_required(views.auction_detail_view)),
+
+    path('api/auction/create/', views.create_auction),
+    path('api/auction/modify/', views.modify_auction),
+
 ]

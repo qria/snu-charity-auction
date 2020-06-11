@@ -6,56 +6,52 @@
   <div class="container">
     <div class="col-md-12">
           <h4 class="mb-3">경매 내용 수정</h4>
-          <form class="needs-validation" novalidate action="/api/auction" method="post">
+          <form class="needs-validation" novalidate action="/api/auction/modify/" method="post">
             {% csrf_token %}
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="auction-id">경매번호</label>
+                <div class="input-group">
+                  <input readonly type="text" class="form-control" name="auction-id" id="auction-id" placeholder="" value="{{ auction.id }}" required>
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-md-12 mb-3">
                 <label for="name">제목</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="name" id="name" placeholder="" value="Eastpak 가방" required>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="" value="{{ auction.name }}" required>
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="min-bid">시작가</label>
-                <input type="text" class="form-control" name="min-bid" id="min-bid" placeholder="" value="0원" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                <label for="min-bid">시작가(원)</label>
+                <input type="text" class="form-control" name="min-bid" id="min-bid" placeholder="" value="{{ auction.min_bid }}" required>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="max-bid">최고가</label>
-                <input type="text" class="form-control" name="max-bid" id="max-bid" placeholder="" value="100,000원" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <label for="max-bid">최고가(원)</label>
+                <input type="text" class="form-control" name="max-bid" id="max-bid" placeholder="" value="{{ auction.max_bid }}" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="start-datetime">시작일</label>
-                <input type="text" class="form-control" name="start-datetime" id="start-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="2020-06-01 00:00:00" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                <label for="start-datetime">시작일(yyyy-MM-dd HH:mm:ss)</label>
+                <input type="text" class="form-control" name="start-datetime" id="start-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="{{ formatted_start_datetime }}" required>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="end-datetime">종료일</label>
-                <input type="text" class="form-control" name="end-datetime" id="end-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="2020-06-15 23:59:59" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <label for="end-datetime">종료일(yyyy-MM-dd HH:mm:ss)</label>
+                <input type="text" class="form-control" name="end-datetime" id="end-datetime" placeholder="(yyyy-MM-dd HH:mm:ss)" value="{{ formatted_end_datetime }}" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12 mb-3">
                 <label for="contents">내용</label>
-                <textarea class="form-control" name="contents" id="contents" rows="20" ></textarea>
-   
+                <textarea class="form-control" name="contents" id="contents" rows="20">{{ auction.contents }}</textarea>
               </div>
             </div>
             

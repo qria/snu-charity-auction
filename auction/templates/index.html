@@ -82,6 +82,9 @@
           </div>
           <div class="card-footer text-center">
             <a href="auction/detail/{{ auction.id }}" class="btn btn-primary">자세히보기</a>
+            {% if request.user.is_admin %}
+              <a href="auction/modify/{{ auction.id }}" class="btn btn-primary" style="margin-left: 10px;">수정</a>
+            {% endif %}
           </div>
         </div>
       </div>

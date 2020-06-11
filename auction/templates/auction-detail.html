@@ -21,7 +21,7 @@
                     시작가: {{ auction.min_bid }}원
                   </div>
                   <div class="col-md-6">
-                    현재가: {{ now_price }}원
+                    현재가: {{ auction.now_bid }}원
                   </div>
                 </div>
                 <div class="row">
@@ -29,15 +29,15 @@
                     최고가: {{ auction.max_bid }}원
                   </div>
                   <div class="col-md-6">
-                    입찰: {{ 4 }}명
+                    입찰: {{ auction.participants_count }}명
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    시작: {{ auction.start_datetime }}
+                    시작: {{ formatted_start_datetime }}
                   </div>
                   <div class="col-md-6">
-                    종료: {{ auction.end_datetime }}
+                    종료: {{ formatted_end_datetime }}
                   </div>
                 </div>
               </h4>

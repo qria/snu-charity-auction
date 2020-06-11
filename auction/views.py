@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.urls import reverse_lazy
+from django.utils import dateformat
 
 
 def index(request):
@@ -49,10 +50,6 @@ def create_auction_view(request):
     return render(request, 'create-auction.html')
 
 
-def modify_auction_view(request):
-    return render(request, 'modify-auction.html')
-
-
 def create_auction(request):
     admin_id = request.user.id
     name = request.POST['name']
@@ -76,7 +73,43 @@ def create_auction(request):
     return HttpResponseRedirect('/')
 
 
+def modify_auction_view(request, auction_id):
+    if not request.user.is_admin:
+        return render(request, 'no-authorization.html')
+
+    auction = Auction.objects.get(id=auction_id)
+    formatted_start_datetime = dateformat.format(auction.start_datetime, 'Y-m-d H:i:s')
+    formatted_end_datetime = dateformat.format(auction.end_datetime, 'Y-m-d H:i:s')
+    context = {'auction': auction, 'formatted_start_datetime': formatted_start_datetime,
+               'formatted_end_datetime': formatted_end_datetime}
+    return render(request, 'modify-auction.html', context=context)
+
+
+def modify_auction(request):
+    auction_id = request.POST['auction-id']
+    name = request.POST['name']
+    contents = request.POST['contents']
+    start_datetime = request.POST['start-datetime']
+    end_datetime = request.POST['end-datetime']
+    min_bid = request.POST['min-bid']
+    max_bid = request.POST['max-bid']
+
+    auction = Auction.objects.get(id=auction_id)
+    auction.name = name
+    auction.contents = contents
+    auction.start_datetime = start_datetime
+    auction.end_datetime = end_datetime
+    auction.min_bid = min_bid
+    auction.max_bid = max_bid
+    auction.save()
+
+    return HttpResponseRedirect(f'/auction/detail/{auction_id}')
+
+
 def auction_detail_view(request, auction_id):
     auction = Auction.objects.get(id=auction_id)
-    context = {'auction': auction}
+    formatted_start_datetime = dateformat.format(auction.start_datetime, 'Y-m-d H:i:s')
+    formatted_end_datetime = dateformat.format(auction.end_datetime, 'Y-m-d H:i:s')
+    context = {'auction': auction, 'formatted_start_datetime': formatted_start_datetime,
+               'formatted_end_datetime': formatted_end_datetime}
     return render(request, 'auction-detail.html', context)
