@@ -133,3 +133,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_REDIRECT_URL = 'index'
 
 AUTH_USER_MODEL = 'auction.User'
+
+LOGIN_URL = '/login/'

@@ -32,7 +32,9 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/admin">관리자로그인</a>
+            {% if request.user.is_authenticated %}
+              <a class="btn btn-md btn-light nav-login-btn nav-login-btn">{{ request.user.username }}님</a>
+            {% endif %}
           </li>
           <li class="nav-item">
             {% if request.user.is_authenticated %}
@@ -48,7 +50,7 @@
   {% block content %}{% endblock %}
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" style="position: relative !important;">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; SNU Charity Auction 2020</p>
     </div>

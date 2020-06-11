@@ -3,23 +3,17 @@
 {% block content %}
   <!-- Page Content -->
   <div class="container">
-    
-    <div>
-      <button>
-        <a href="/auction/modify">수정</a>
-      </button>
-    
-    </div>
+    {% if not request.user.is_authenticated %}
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
       <h1 class="display-3">기부와 경매를 동시에</h1>
       <p class="lead">SNU 자선경매는 서울대학교 재학생들을 위한 기부/경매 플랫폼입니다.</p>
       <a href="/login" class="btn btn-primary btn-lg">가입하기</a>
     </header>
-
+    {% endif %}
     <!-- Page Features -->
 
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
       &nbsp;&nbsp;&nbsp;
       <form action="kind.jsp">
         종류&nbsp;
@@ -64,87 +58,37 @@
         <a href="/" class="btn btn-primary btn-sm">검색</a>
         &nbsp;
       
-        <a href="/auction/create" class="btn btn-primary btn-sm">등록</a>
+        <a href="/auction/create/" class="btn btn-primary btn-sm">등록</a>
       </div>
     </div>
     <br/>
-    
-    <div class="row text-center">
+
+    {% for auction in auctions %}
+      {% if forloop.counter|divisibleby:4 %}
+        <div class="row">
+      {% endif %}
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="{% static 'img/item1.jpg' %}" alt="">
           <div class="card-body">
-            <h4 class="card-title">Eastpak 가방</h4>
+            <h4 class="card-title">{{ auction.name }}</h4>
             <p class="card-text text-left">
                 <br/>
-                원가: 20,000원 <br/>
-                현재가: 3,000원 <br/>
-                입찰: 3명 <br/>
-                종료: 3일 후
+                시작가: {{ auction.min_bid }}원 <br/>
+                현재가: {{ auction.now_bid }}원 <br/>
+                입찰: {{ auction.participants_count }}명 <br/>
+                종료: {{ auction.end_datetime }}
             </p>
           </div>
-          <div class="card-footer">
-            <a href="/login" class="btn btn-primary">입찰하기</a>
+          <div class="card-footer text-center">
+            <a href="auction/detail/{{ auction.id }}" class="btn btn-primary">자세히보기</a>
           </div>
         </div>
       </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="{% static 'img/item2.jpg' %}" alt="">
-          <div class="card-body">
-            <h4 class="card-title">아디다스 슈퍼스타 오리지널</h4>
-            <p class="card-text text-left">
-                원가: 53,000원 <br/>
-                현재가: 13,000원 <br/>
-                입찰: 2명 <br/>
-                종료: 5일 후
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="/login" class="btn btn-primary">입찰하기</a>
-          </div>
+      {% if forloop.counter|divisibleby:4 %}
         </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="{% static 'img/item3.jpg' %}" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Official TOEFL iBT Tests Vol 2</h4>
-            <p class="card-text text-left">
-                원가: 22,000원 <br/>
-                현재가: 5,000원 <br/>
-                입찰: 1명 <br/>
-                종료: 7일 후</p>
-          </div>
-          <div class="card-footer">
-            <a href="/login" class="btn btn-primary">입찰하기</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="{% static 'img/item4.jpg' %}" alt="">
-          <div class="card-body">
-            <h4 class="card-title">빈폴 지갑</h4>
-            <p class="card-text text-left">
-                <br/>
-                원가: 2,000원 <br/>
-                현재가: 0원 <br/>
-                입찰: 0명 <br/>
-                종료: 15일 후
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="/login" class="btn btn-primary">입찰하기</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- /.row -->
+      {% endif %}
+    {% endfor %}
 
   </div>
   <!-- /.container -->
