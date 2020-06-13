@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
   <!-- Page Content -->
+      <div>
+      <button>
+        <a href="user-list">사용자보기</a>
+      </button>
+    </div>
   <div class="container">
     {% if not request.user.is_authenticated %}
     <!-- Jumbotron Header -->

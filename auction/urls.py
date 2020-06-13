@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('join/', views.CreateUserView.as_view(), name='join'),
     path('join-done/', views.CreateUserView.as_view(), name='join_done'),
+    path('user-list/', views.user_list_view),
 
     path('auction/create/', login_required(views.create_auction_view)),
     path('auction/modify/<int:auction_id>/', login_required(views.modify_auction_view)),

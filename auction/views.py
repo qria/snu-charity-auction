@@ -122,3 +122,8 @@ def auction_detail_view(request, auction_id):
     context = {'auction': auction, 'formatted_start_datetime': formatted_start_datetime,
                'formatted_end_datetime': formatted_end_datetime}
     return render(request, 'auction-detail.html', context)
+    
+def user_list_view(request):
+    users = User.objects.all()
+    context = {'users' : users}
+    return render(request, 'user-list.html', context=context)
