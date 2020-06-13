@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import django_heroku
 import mimetypes
 import os
 
@@ -135,3 +136,6 @@ LOGIN_REDIRECT_URL = 'index'
 AUTH_USER_MODEL = 'auction.User'
 
 LOGIN_URL = '/login/'
+
+# Configure heroku
+django_heroku.settings(locals())
