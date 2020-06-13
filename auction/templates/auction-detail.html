@@ -64,6 +64,10 @@
       </div>
     </div>
     <button class="btn btn-primary btn-lg mb-4 pull-right btn-block">입찰</button>
+    {% if request.user.is_admin %}
+              <a href="delete" onclick="return confirm('정말 삭제하시겠습니까?');" class="btn btn-primary" style="margin-left: 10px;">삭제</a>
+              {% endif %}
+            
   </div>
 
 {% endblock %}

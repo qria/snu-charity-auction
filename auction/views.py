@@ -44,8 +44,8 @@ class RegisteredView(TemplateView): # generic view중에 TemplateView를 상속�
 
 
 def create_auction_view(request):
-    if not request.user.is_admin:
-        return render(request, 'no-authorization.html')
+    #if not request.user.is_admin:
+     #   return render(request, 'no-authorization.html')
 
     return render(request, 'create-auction.html')
 
@@ -104,6 +104,15 @@ def modify_auction(request):
     auction.save()
 
     return HttpResponseRedirect(f'/auction/detail/{auction_id}')
+    
+def delete_auction(request, auction_id):
+    if not request.user.is_admin:
+        return render(request, 'no-authorization.html')
+        
+    auction = Auction.objects.get(id=auction_id)
+    auction.delete()
+    return HttpResponseRedirect('/')
+    
 
 
 def auction_detail_view(request, auction_id):

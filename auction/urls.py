@@ -16,8 +16,10 @@ urlpatterns = [
     path('auction/create/', login_required(views.create_auction_view)),
     path('auction/modify/<int:auction_id>/', login_required(views.modify_auction_view)),
     path('auction/detail/<int:auction_id>/', login_required(views.auction_detail_view)),
+    path('auction/detail/<int:auction_id>/delete/', login_required(views.delete_auction)),
 
     path('api/auction/create/', views.create_auction),
     path('api/auction/modify/', views.modify_auction),
 
 ]
+
